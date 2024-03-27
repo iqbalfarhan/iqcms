@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Guest;
+namespace App\Livewire;
 
 use Livewire\Component;
 
@@ -8,6 +8,6 @@ class Welcome extends Component
 {
     public function render()
     {
-        return view('livewire.guest.welcome');
+        return view('livewire.welcome');
     }
 }

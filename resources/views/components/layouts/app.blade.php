@@ -11,14 +11,28 @@
 
     <body>
         @guest
-            <div class="container mx-auto">
-                @livewire('partial.guest.navbar')
+            @if (Route::is('login'))
+                <div class="flex justify-center items-center min-h-screen">
+                    {{ $slot }}
+                </div>
+            @else
                 {{ $slot }}
-            </div>
+            @endif
         @endguest
 
         @auth
-            {{ $slot }}
+            <div class="drawer lg:drawer-open">
+                <input id="drawer" type="checkbox" class="drawer-toggle" />
+                <div class="drawer-content">
+                    @livewire('partial.navbar')
+                    {{ $slot }}
+                </div>
+                <div class="drawer-side">
+                    <label for="drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+                    @livewire('partial.sidebar')
+                </div>
+            </div>
+
         @endauth
     </body>
 
